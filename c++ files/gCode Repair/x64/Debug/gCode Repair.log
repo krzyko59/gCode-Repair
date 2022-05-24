@@ -1,0 +1,14 @@
+﻿  gCode Repair.cpp
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(142,24): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(201,47): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(184,20): warning C4101: "N_number": lokalna zmienna, do której nie istnieje odwołanie
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(225,68): warning C4267: "inicjowanie": konwersja z "size_t" do "short", możliwa utrata danych
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(307,20): warning C4309: "return": obcięcie stałej wartości
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(314,20): warning C4309: "return": obcięcie stałej wartości
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(320,54): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned short", możliwa utrata danych
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(430,51): warning C4267: "inicjowanie": konwersja z "size_t" do "short", możliwa utrata danych
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(439,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(442,49): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(443,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+E:\nauka c++\gCode Repair\gCode Repair\gCode Repair.cpp(444,74): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+  gCode Repair.vcxproj -> E:\nauka c++\gCode Repair\x64\Debug\gCode Repair.exe
