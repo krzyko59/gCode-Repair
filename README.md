@@ -21,8 +21,10 @@ Zasady działania programu:
 - wycina numeracje N<numer lini>
 - normalizuje zapisy (np.G01, g01, g1 na G1)
 - [1] 
--- szuka obrysu zewnetrzego sita
--- zczytuje i oblicza wielkość, pozycje koła
--- generuje nowe koło uwzględniając korekcje braku kalibracji głowicy, dodając polecenia do ukosowania głowicy 3D
+- - szuka obrysu zewnetrzego sita
+- - zczytuje i oblicza wielkość, pozycje koła
+- - generuje nowe koło uwzględniając korekcje braku kalibracji głowicy, dodając polecenia do ukosowania głowicy 3D
+- [4]
+- - podmienia lub dodaje parametr C na C180
 - dodaje poniwnie numeracje N<numer lini>
 - zapisuje plik do folderu z którego został wczytany o nazwie [nazwa pliku bazowego]_gCr.NCP
