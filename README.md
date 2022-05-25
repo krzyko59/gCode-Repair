@@ -6,3 +6,6 @@ Program ten: </br>
 - dostosowuje gotowe programy maszynowe do specyficznych sytuacji</br>
 - wzbogaca gotowe programy maszynowe o funkcjonalności, których ponowne stworzenie jest czasochłonne</br>
 - ułatwia prace operatora(operator nie musi stac przy maszynie i kontrolowac predkosc)</br>
+![screen 1](https://github.com/krzyko59/gCode-Repair/blob/main/screen_1.png?raw=true)</br>
+![screen 2](https://github.com/krzyko59/gCode-Repair/blob/main/screen_2.png?raw=true)</br>
+![screen 3](https://github.com/krzyko59/gCode-Repair/blob/main/screen_3.png?raw=true)</br>
