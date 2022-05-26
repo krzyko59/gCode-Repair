@@ -28,4 +28,4 @@ Program ten: </br>
 - [4]
 - - podmienia lub dodaje parametr C na C180
 - dodaje ponownie numeracje N<numer linii>
-- zapisuje plik do folderu z którego został wczytany o nazwie [nazwa pliku bazowego]_gCr.NCP
+- zapisuje plik o nazwie [nazwa pliku bazowego]_gCr.NCP do folderu z którego został wczytany 
