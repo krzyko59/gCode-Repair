@@ -10,13 +10,14 @@ Program ten: </br>
 ![screen 2](https://github.com/krzyko59/gCode-Repair/blob/main/screen_4.png?raw=true)</br>
 ![screen 3](https://github.com/krzyko59/gCode-Repair/blob/main/screen_2.png?raw=true)</br>
 ![screen 4](https://github.com/krzyko59/gCode-Repair/blob/main/screen_3.png?raw=true)</br>
-</br>Instrukcja:
+</br></br>**Instrukcja:**
 - a) uruchomić program, przeciągnąć plik *.NCP do konsoli, wcisnąć enter.
 - b) przeciągnąć plik *.NCP bezpośrednio na ikone programu gCode repair
 - postępować zgodnie z komunikatami wyświetlanymi w konsoli.
-</br>Wymagania:
-- 
-</br>Zasady działania programu:
+</br></br>**Wymagania:**
+- Microsoft Visual C++ Redistributable 2015-2022 (x64)
+- Microsoft Windows 7 64bit lub nowszy
+</br></br>**Zasady działania programu:**
 - program wczytuje treść pliku *.NCP
 - wycina numeracje N<numer lini>
 - normalizuje zapisy (np.G01, g01, g1 na G1)
