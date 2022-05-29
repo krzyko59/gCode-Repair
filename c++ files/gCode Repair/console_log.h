@@ -12,8 +12,8 @@
 //data
 #include <windows.h>
 #include <winbase.h>
+using std::string;
 
-using namespace std;
 enum console_colors
 {
 	C_BLUE = 1,
@@ -31,10 +31,13 @@ class Console
 	//
 public:
 	Console();
-	friend void show_program_info(Console& console);
-	friend void show_separation();
+	void show_separation();
+	void end_program();
+	void show_options_to_select(short used_options[]);
+	void show_program_info();
+	void what_file_to_load(string& file_path, int argc, char** argv);
 	void text_color(unsigned short color);
-	void show_console_log(Console& console);
-	void add_console_log(/*string console_log[], unsigned short& console_log_size,*/ string log, unsigned short color/*, unsigned short console_color[]*/, Console& console);
+	void show_console_log();
+	void add_console_log(string log, unsigned short color);
 };
 #endif

@@ -1,7 +1,5 @@
 #include "options.h"
 
-using namespace std;
-
 bool option_1(string line[], unsigned short& line_amout, Console& console)
 {
     unsigned short technology_on_position = 0;
@@ -57,8 +55,7 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     //line[technology_on_position - 1 + 5].append("G3 X" + to_string(new_x - 17.0711) + " Y" + to_string(new_y) + " I-7.07107 J-7.07107 BEVEL(-25.0)");//MOZLIWE ZE BEDZIE POTRZEBA ZAPISU BEVEL(0.0)
     line[technology_on_position - 1 + 6].append("TECHNOLOGY_OFF G40");
     line[technology_on_position - 1 + 7].append("BEVEL_OFF");
-    //show_sukces("Przerobiono obrys zewnetrzny na ukosowanie");
-    console.add_console_log(/*console_log, console_log_size , */"Przerobiono obrys zewnetrzny na ukosowanie", console_colors(C_GREEN)/*, console_color */, console);
+    console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie", console_colors(C_GREEN));
     return true;
 }
 bool option_4(string line[], unsigned short& line_amout, Console& console)
@@ -67,16 +64,14 @@ bool option_4(string line[], unsigned short& line_amout, Console& console)
     short init_position = find_line("INIT", 0, line, line_amout);
     if (init_position == string::npos)
     {
-        //show_blad("Program nie posiada frazy: INIT");
-        console.add_console_log(/*console_log, console_log_size, */"Program nie posiada frazy: INIT", console_colors(C_RED)/*, console_color*/, console);
+        console.add_console_log("Program nie posiada frazy: INIT", console_colors(C_RED));
         return false;
     }
     //szukanie lini z ostatnim "TECHNOLOGY_OFF"
     short technology_off_position = rfind_line("TECHNOLOGY_OFF", line_amout, line);
     if (technology_off_position == string::npos)
     {
-        //show_blad("Program nie posiada frazy : TECHNOLOGY_OFF");
-        console.add_console_log(/*console_log, console_log_size, */"Program nie posiada frazy : TECHNOLOGY_OFF", console_colors(C_RED)/*, console_color*/, console);
+        console.add_console_log("Program nie posiada frazy : TECHNOLOGY_OFF", console_colors(C_RED));
         return false;
     }
     //dodanie lini "BEVEL_ON_DIRECTAX" po lini "USE_PRESELECTED"
@@ -116,7 +111,6 @@ bool option_4(string line[], unsigned short& line_amout, Console& console)
             line[i].insert(from_position + 1, "180");
         }
     }
-    //show_sukces("Obrocono glowice na 180 stopni w calym programie");
-    console.add_console_log(/*console_log, console_log_size, */"Obrocono glowice na 180 stopni w calym programie", console_colors(C_GREEN)/*, console_color*/, console);
+    console.add_console_log("Obrocono glowice na 180 stopni w calym programie", console_colors(C_GREEN));
     return true;
 }

@@ -2,66 +2,15 @@
 #define functions_h
 #include "functions.h"
 
-
-using namespace std;
-
-void show_separation()
-{
-    cout << "------------------------------" << endl;
-}
-void show_options_to_select(short used_options[], Console& console)
-{
-    cout << "\tWpisz numer opcji programu aby wykonac operacje" << endl <<
-        "\tOpcje programu:" << endl;
-    if (used_options[1] == 0)
-        cout << "[beta]    \t\t[1] Konwertowanie sita na ukosowanie obrysu zewnetrznego sita" << endl;
-    console.text_color(console_colors(C_RED));
-    cout << "[w planach]\t\t[2] Konwertowanie na wpalenia bez kompensacji" << endl;
-    cout << "[w planach]\t\t[3] Zmiana wielkosci wpalen/wyjsc" << endl;
-    console.text_color(console_colors(C_WHITE));
-    cout << "[early access]\t\t[4] Obrocenie glowicy na 180 stopni w calym programie" << endl;
-    console.text_color(console_colors(C_RED));
-    cout << "[w planach]\t\t[5] Zmiana predkosci palenia na krzywych (otworach)" << endl;
-    //cout << "\t\t[9] Informacje o mozliwosciach programu" << endl;
-    console.text_color(console_colors(C_WHITE));
-    if (used_options[0] != 0)
-        cout << "\t\t\t[0] Zapis do pliku i koniec programu" << endl;
-}
-void show_program_info(Console& console)
-{
-    console.text_color(console_colors(C_BLUE));
-    cout <<
-        "\tgCODE repair" << endl <<
-        "\tWersja " << verssion(vMAJOR) << "." << verssion(vMINIOR) << "." << verssion(vRELEASE) << endl <<
-        "\tAutor: Kolos Krzysztof (krzysztof.kolos.95@gmail.com)" << endl << endl;
-    console.text_color(console_colors(C_WHITE));
-}
-void show_blad(string text, Console& console)
-{
-    console.text_color(console_colors(C_RED));
-    show_separation();
-    cout << "BLAD!!!" << endl << "\t" << text << endl;
-    console.text_color(C_WHITE);
-}
-void show_sukces(string text, Console& console)
-{
-    console.text_color(console_colors(C_GREEN));
-    show_separation();
-    cout << "SUKCES!!!" << endl << "\t" << text << endl;
-    console.text_color(C_WHITE);
-}
 char load_options_to_select(short used_options[], Console& console)
 {
     char choice = _getch();
     bool bad_choice = false;
     while (choice < 48 || (choice > 53 && choice != 57))//'0'-48 '5'-53 '9'=57
     {
-        console.add_console_log(/*console_log, console_log_size, */"Nie ma takiej opcji do wybrania", console_colors(C_WHITE) /*console_color*/, console);
-        /*show_separation();
-        cout << "\tNie ma takiej opcji do wybrania" << endl;
-        */
-        console.show_console_log(console);
-        show_options_to_select(used_options, console);
+        console.add_console_log("Nie ma takiej opcji do wybrania", console_colors(C_WHITE));
+        console.show_console_log();
+        console.show_options_to_select(used_options);
         choice = _getch();
     }
     return choice;
@@ -76,18 +25,6 @@ void remove_quote(string& file_path)
         file_path.insert(0, text);
     }
 }
-void what_file_to_load(string& file_path, int argc, char** argv, Console& console)
-{
-    if (argc != 1 && file_path == "")
-    {
-        file_path = argv[1];
-        return;
-    }
-    console.show_console_log(console);
-    cout << "\tPodaj sciezke pliku do przetworzenia: ";
-    getline(cin, file_path);
-    remove_quote(file_path);
-}
 string to_uppercase(string text)
 {
     int i = text.size();
@@ -101,8 +38,7 @@ bool is_ncp(string& file_path, Console& console)
     string text = to_uppercase(file_path);
     if (text.rfind(".NCP", text.size()) == text.size() - 4)
         return true;
-    console.add_console_log(/*console_log, console_log_size,*/
-        "Plik ktory probujesz wczytac nie ma rozszerzenia * .NCP", console_colors(C_RED), /*console_color*/ console);
+    console.add_console_log("Plik ktory probujesz wczytac nie ma rozszerzenia * .NCP", console_colors(C_RED));
     return false;
 }
 bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned short& line_amout, Console& console)
@@ -111,8 +47,7 @@ bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned
     loaded_file.open(file_path);
     if (!loaded_file.good())
     {
-        //show_blad("Odczyt pliku byl nie mozliwy : " + file_path);
-        console.add_console_log(/*console_log, console_log_size, */"Odczyt pliku byl nie mozliwy : " + file_path, console_colors(C_RED)/*, console_color*/, console);
+        console.add_console_log("Odczyt pliku byl nie mozliwy : " + file_path, console_colors(C_RED));
         return false;
     }
     line_amout = 0;
@@ -126,24 +61,20 @@ bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned
         line_amout++;
     }
     loaded_file.close();
-    //show_sukces("Udalo sie wczytac plik : " + file_path);
-    console.add_console_log(/*console_log, console_log_size, */"Udalo sie wczytac plik : " + file_path, console_colors(C_GREEN)/*, console_color*/, console);
+    console.add_console_log("Udalo sie wczytac plik : " + file_path, console_colors(C_GREEN));
     return true;
 }
 void remove_N_numbering(string line[], unsigned short& line_amout, Console& console)
 {
-    //unsigned short N_number;
     for (unsigned short i = 0; i < line_amout; i++)
     {
-        //TODO: remove_N_numbering: blad gdy w lini jest "koment
         if (line[i] == "")
             continue;
         if ((line[i].find("\"", 0) == string::npos && line[i].find("N", 0) != 0) &&
             (line[i].find("N", 1) != string::npos && //brak wiecej N
                 line[i].find("N", 1) < line[i].find("\"", 1)))
         {
-            //show_blad("Zla numeracja N lini: " + i);
-            console.add_console_log(/*console_log, console_log_size, */"Zla numeracja N lini: " + to_string(i), console_colors(C_RED)/*, console_color*/, console);
+            console.add_console_log("Zla numeracja N lini: " + to_string(i), console_colors(C_RED));
             return;
         }
         if (line[i].find("\"", 0) != string::npos && line[i].find("N", 0) != 0)
@@ -179,18 +110,29 @@ void DEBUG_show_lines(string line[], unsigned short& line_amout)
     for (unsigned short i = 0; i < line_amout; i++)
         cout << i << " | " << line[i] << endl;
 }
+bool is_file_exist(string FileName) 
+{
+
+    const std::filesystem::path p = FileName;
+    return (std::filesystem::exists(p));
+}
 bool save_file(string& file_path, string line[], unsigned short& line_amout, Console& console)
 {
     string new_file_path;
-    short dot_position = file_path.rfind(".", file_path.size() - 1);
-    new_file_path.insert(0, file_path, 0, dot_position);
-    new_file_path.append("_gCr.NCP");
+    new_file_path.insert(0, file_path, 0, file_path.rfind(".", file_path.size() - 1));
+    if (is_file_exist(new_file_path + "_gCr.NCP"))
+    {
+        short file_version = 1;
+        while (is_file_exist(new_file_path + "_gCr_V" + to_string(file_version) + ".NCP"))
+            file_version++;
+        new_file_path.append("_gCr_V" + to_string(file_version) + ".NCP");
+    }
+    else new_file_path.append("_gCr.NCP");
     ofstream file;
     file.open(new_file_path, ios::out);
     if (!file.good())
     {
-        //show_blad("Zapis pliku byl nie mozliwy: " + new_file_path);
-        console.add_console_log(/*console_log, console_log_size, */"Zapis pliku byl nie mozliwy: " + new_file_path, console_colors(C_RED)/*, console_color*/, console);
+        console.add_console_log("Zapis pliku byl nie mozliwy: " + new_file_path, console_colors(C_RED));
         return false;
     }
     string write_line;
@@ -202,16 +144,9 @@ bool save_file(string& file_path, string line[], unsigned short& line_amout, Con
         if (i < line_amout - 1) write_line.append("\n");
         file.write(write_line.c_str(), write_line.size());
     }
-
     file.close();
-    //show_sukces("Udalo sie zapisac plik : " + new_file_path);
-    console.add_console_log(/*console_log, console_log_size, */"Udalo sie zapisac plik : " + new_file_path, console_colors(C_GREEN)/*, console_color*/, console);
+    console.add_console_log("Udalo sie zapisac plik : " + new_file_path, console_colors(C_GREEN));
     return true;
-}
-void end_program()
-{
-    cout << "Wcisnij dowolny klawisz aby zamknac program";
-    _getch();
 }
 void insert_line(int shift_amout, int from_line, string line[], unsigned short& line_amout)
 {
