@@ -1,3 +1,5 @@
+#ifndef console_log_h
+#define console_log_h
 #include <iostream>
 #include <string>
 #include <conio.h>//_getch
@@ -12,10 +14,16 @@
 #include <winbase.h>
 
 using namespace std;
-
-class Console
+enum console_colors
 {
-	const unsigned short C_BLUE = 1, C_GREEN = 10, C_RED = 12, C_WHITE = 7;
+	C_BLUE = 1,
+	C_GREEN = 10,
+	C_RED = 12,
+	C_WHITE = 7
+};
+class Console
+{ 
+
 	//console log
 	string console_log[100];
 	unsigned short console_color[100];
@@ -23,9 +31,10 @@ class Console
 	//
 public:
 	Console();
-	friend void show_program_info();
+	friend void show_program_info(Console& console);
 	friend void show_separation();
 	void text_color(unsigned short color);
-	void show_console_log();
-	void add_console_log(string console_log[], unsigned short& console_log_size, string log, unsigned short color, unsigned short console_color[]);
+	void show_console_log(Console& console);
+	void add_console_log(/*string console_log[], unsigned short& console_log_size,*/ string log, unsigned short color/*, unsigned short console_color[]*/, Console& console);
 };
+#endif

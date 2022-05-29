@@ -10,24 +10,26 @@
 //data
 #include <windows.h>
 #include <winbase.h>
+#include "console_log.h"
+#include "options.h"
 
 using namespace std;
 
 void show_separation();
 void show_options_to_select(short used_options[],  Console& console);
-void show_program_info();
-void show_blad(string text);
-void show_sukces(string text);
-char load_options_to_select(short used_options[]);
+void show_program_info(Console& console);
+void show_blad(string text, Console& console);
+void show_sukces(string text, Console& console);
+char load_options_to_select(short used_options[], Console& console);
 void remove_quote(string& file_path);
-void what_file_to_load(string& file_path, int argc, char** argv);
+void what_file_to_load(string& file_path, int argc, char** argv, Console& console);
 string to_uppercase(string text);
-bool is_ncp(string& file_path);
-bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned short& line_amout);
-void remove_N_numbering(string line[], unsigned short& line_amout);
+bool is_ncp(string& file_path, Console& console);
+bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned short& line_amout, Console& console);
+void remove_N_numbering(string line[], unsigned short& line_amout, Console& console);
 void add_N_numbering(string line[], unsigned short& line_amout);
 void DEBUG_show_lines(string line[], unsigned short& line_amout);
-bool save_file(string& file_path, string line[], unsigned short& line_amout);
+bool save_file(string& file_path, string line[], unsigned short& line_amout, Console& console);
 void end_program();
 void insert_line(int shift_amout, int from_line, string line[], unsigned short& line_amout);
 void remove_line(int shift_amout, int from_line, string line[], unsigned short& line_amout);

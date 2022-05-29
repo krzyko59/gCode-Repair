@@ -1,5 +1,7 @@
+#ifndef functions_h
+#define functions_h
 #include "functions.h"
-#include "console_log.h"
+
 
 using namespace std;
 
@@ -13,53 +15,53 @@ void show_options_to_select(short used_options[], Console& console)
         "\tOpcje programu:" << endl;
     if (used_options[1] == 0)
         cout << "[beta]    \t\t[1] Konwertowanie sita na ukosowanie obrysu zewnetrznego sita" << endl;
-    console.text_color(console.C_RED);
+    console.text_color(console_colors(C_RED));
     cout << "[w planach]\t\t[2] Konwertowanie na wpalenia bez kompensacji" << endl;
     cout << "[w planach]\t\t[3] Zmiana wielkosci wpalen/wyjsc" << endl;
-    console.text_color(console.C_WHITE);
+    console.text_color(console_colors(C_WHITE));
     cout << "[early access]\t\t[4] Obrocenie glowicy na 180 stopni w calym programie" << endl;
-    console.text_color(console.C_RED);
+    console.text_color(console_colors(C_RED));
     cout << "[w planach]\t\t[5] Zmiana predkosci palenia na krzywych (otworach)" << endl;
     //cout << "\t\t[9] Informacje o mozliwosciach programu" << endl;
-    console.text_color(console.C_WHITE);
+    console.text_color(console_colors(C_WHITE));
     if (used_options[0] != 0)
         cout << "\t\t\t[0] Zapis do pliku i koniec programu" << endl;
 }
-void show_program_info()
+void show_program_info(Console& console)
 {
-    text_color(C_BLUE);
+    console.text_color(console_colors(C_BLUE));
     cout <<
         "\tgCODE repair" << endl <<
-        "\tWersja " << vMAJOR << "." << vMINIOR << "." << vRELEASE << endl <<
+        "\tWersja " << verssion(vMAJOR) << "." << verssion(vMINIOR) << "." << verssion(vRELEASE) << endl <<
         "\tAutor: Kolos Krzysztof (krzysztof.kolos.95@gmail.com)" << endl << endl;
-    text_color(C_WHITE);
+    console.text_color(console_colors(C_WHITE));
 }
-void show_blad(string text)
+void show_blad(string text, Console& console)
 {
-    text_color(C_RED);
+    console.text_color(console_colors(C_RED));
     show_separation();
     cout << "BLAD!!!" << endl << "\t" << text << endl;
-    text_color(C_WHITE);
+    console.text_color(C_WHITE);
 }
-void show_sukces(string text)
+void show_sukces(string text, Console& console)
 {
-    text_color(C_GREEN);
+    console.text_color(console_colors(C_GREEN));
     show_separation();
     cout << "SUKCES!!!" << endl << "\t" << text << endl;
-    text_color(C_WHITE);
+    console.text_color(C_WHITE);
 }
-char load_options_to_select(short used_options[])
+char load_options_to_select(short used_options[], Console& console)
 {
     char choice = _getch();
     bool bad_choice = false;
     while (choice < 48 || (choice > 53 && choice != 57))//'0'-48 '5'-53 '9'=57
     {
-        add_console_log(console_log, console_log_size, "Nie ma takiej opcji do wybrania", C_WHITE, console_color);
+        console.add_console_log(/*console_log, console_log_size, */"Nie ma takiej opcji do wybrania", console_colors(C_WHITE) /*console_color*/, console);
         /*show_separation();
         cout << "\tNie ma takiej opcji do wybrania" << endl;
         */
-        show_console_log();
-        show_options_to_select(used_options);
+        console.show_console_log(console);
+        show_options_to_select(used_options, console);
         choice = _getch();
     }
     return choice;
@@ -74,14 +76,14 @@ void remove_quote(string& file_path)
         file_path.insert(0, text);
     }
 }
-void what_file_to_load(string& file_path, int argc, char** argv)
+void what_file_to_load(string& file_path, int argc, char** argv, Console& console)
 {
     if (argc != 1 && file_path == "")
     {
         file_path = argv[1];
         return;
     }
-    show_console_log();
+    console.show_console_log(console);
     cout << "\tPodaj sciezke pliku do przetworzenia: ";
     getline(cin, file_path);
     remove_quote(file_path);
@@ -94,23 +96,23 @@ string to_uppercase(string text)
             text[i] = (text[i] - 32);
     return text;
 }
-bool is_ncp(string& file_path)
+bool is_ncp(string& file_path, Console& console)
 {
     string text = to_uppercase(file_path);
     if (text.rfind(".NCP", text.size()) == text.size() - 4)
         return true;
-    add_console_log(console_log, console_log_size,
-        "Plik ktory probujesz wczytac nie ma rozszerzenia * .NCP", C_RED, console_color);
+    console.add_console_log(/*console_log, console_log_size,*/
+        "Plik ktory probujesz wczytac nie ma rozszerzenia * .NCP", console_colors(C_RED), /*console_color*/ console);
     return false;
 }
-bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned short& line_amout)
+bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned short& line_amout, Console& console)
 {
     //TODO: load_file: problem przy wczytywaniu pliku  z '—' ( EM DASH ) w nazwie.
     loaded_file.open(file_path);
     if (!loaded_file.good())
     {
         //show_blad("Odczyt pliku byl nie mozliwy : " + file_path);
-        add_console_log(console_log, console_log_size, "Odczyt pliku byl nie mozliwy : " + file_path, C_RED, console_color);
+        console.add_console_log(/*console_log, console_log_size, */"Odczyt pliku byl nie mozliwy : " + file_path, console_colors(C_RED)/*, console_color*/, console);
         return false;
     }
     line_amout = 0;
@@ -125,10 +127,10 @@ bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned
     }
     loaded_file.close();
     //show_sukces("Udalo sie wczytac plik : " + file_path);
-    add_console_log(console_log, console_log_size, "Udalo sie wczytac plik : " + file_path, C_GREEN, console_color);
+    console.add_console_log(/*console_log, console_log_size, */"Udalo sie wczytac plik : " + file_path, console_colors(C_GREEN)/*, console_color*/, console);
     return true;
 }
-void remove_N_numbering(string line[], unsigned short& line_amout)
+void remove_N_numbering(string line[], unsigned short& line_amout, Console& console)
 {
     //unsigned short N_number;
     for (unsigned short i = 0; i < line_amout; i++)
@@ -141,7 +143,7 @@ void remove_N_numbering(string line[], unsigned short& line_amout)
                 line[i].find("N", 1) < line[i].find("\"", 1)))
         {
             //show_blad("Zla numeracja N lini: " + i);
-            add_console_log(console_log, console_log_size, "Zla numeracja N lini: " + to_string(i), C_RED, console_color);
+            console.add_console_log(/*console_log, console_log_size, */"Zla numeracja N lini: " + to_string(i), console_colors(C_RED)/*, console_color*/, console);
             return;
         }
         if (line[i].find("\"", 0) != string::npos && line[i].find("N", 0) != 0)
@@ -177,7 +179,7 @@ void DEBUG_show_lines(string line[], unsigned short& line_amout)
     for (unsigned short i = 0; i < line_amout; i++)
         cout << i << " | " << line[i] << endl;
 }
-bool save_file(string& file_path, string line[], unsigned short& line_amout)
+bool save_file(string& file_path, string line[], unsigned short& line_amout, Console& console)
 {
     string new_file_path;
     short dot_position = file_path.rfind(".", file_path.size() - 1);
@@ -188,7 +190,7 @@ bool save_file(string& file_path, string line[], unsigned short& line_amout)
     if (!file.good())
     {
         //show_blad("Zapis pliku byl nie mozliwy: " + new_file_path);
-        add_console_log(console_log, console_log_size, "Zapis pliku byl nie mozliwy: " + new_file_path, C_RED, console_color);
+        console.add_console_log(/*console_log, console_log_size, */"Zapis pliku byl nie mozliwy: " + new_file_path, console_colors(C_RED)/*, console_color*/, console);
         return false;
     }
     string write_line;
@@ -203,7 +205,7 @@ bool save_file(string& file_path, string line[], unsigned short& line_amout)
 
     file.close();
     //show_sukces("Udalo sie zapisac plik : " + new_file_path);
-    add_console_log(console_log, console_log_size, "Udalo sie zapisac plik : " + new_file_path, C_GREEN, console_color);
+    console.add_console_log(/*console_log, console_log_size, */"Udalo sie zapisac plik : " + new_file_path, console_colors(C_GREEN)/*, console_color*/, console);
     return true;
 }
 void end_program()
@@ -298,15 +300,6 @@ string take_data(string text, string data_param)
 }
 double round_two(double data)
 {
-    /*
-    add_console_log(console_log, console_log_size, to_string(data), C_WHITE, console_color);
-    data = (float)(data * 100.0);
-    add_console_log(console_log, console_log_size, to_string(data), C_WHITE, console_color);
-    data = (float)(round(data));
-    add_console_log(console_log, console_log_size, to_string(data), C_WHITE, console_color);
-    data = (double)(data / 100);
-    add_console_log(console_log, console_log_size, to_string(data), C_WHITE, console_color);
-    return data;
-    */
     return round(data * 100) / 100;
 }
+#endif

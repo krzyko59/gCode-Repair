@@ -32,10 +32,10 @@
     <ClInclude Include="options.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="functions.h">
+    <ClInclude Include="console_log.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="console_log.h">
+    <ClInclude Include="functions.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
