@@ -19,7 +19,7 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     old_x = old_y = old_i = old_j = 0;
     for (int i = technology_off_position - 2; i > 0; i--)
     {
-        if (line[i].find("G2", 0) == string::npos)
+        if (line[i].find("G2", 0) == string::npos && line[i].find("G3", 0) == string::npos)
             continue;
         old_x = stof(take_data(line[i - 1], "X"));
         old_y = stof(take_data(line[i - 1], "Y"));
@@ -34,28 +34,35 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     middle_x = old_x + old_i;
     middle_y = old_y + old_j;
     //korekcja odchy³u g³owicy
+    float corr_diametr = 13;
+    float corr_middle_x = -0.5;
+    float corr_middle_y = 2;
 
-    diametr += 13;
-    middle_x - 0.5;
-    middle_y += 2;
+    diametr += corr_diametr;
+    middle_x += corr_middle_x;
+    middle_y += corr_middle_y;
 
-    new_ij = round_two(diametr / 1.41421356237 / 2.0);//sqrt((diametr * diametr) / 2) / 2;
+    new_ij = round_two(diametr / 1.41421356237 / 2.0);
 
     new_x = round_two(middle_x - new_ij);
     new_y = round_two(middle_y - new_ij);
 
     //generowanie kola
     insert_line(8, technology_on_position - 1, line, line_amout);
-    line[technology_on_position - 1].append("BEVEL_ON");
-    line[technology_on_position - 1 + 1].append("G0 X" + to_string(new_x - 20) + " Y" + to_string(new_y - 20) + " G41");
-    line[technology_on_position - 1 + 2].append("TECHNOLOGY_ON");
-    line[technology_on_position - 1 + 3].append("G1 X" + to_string(new_x) + " Y" + to_string(new_y) + " BEVEL(0.0)");
-    line[technology_on_position - 1 + 4].append("G2 X" + to_string(new_x) + " Y" + to_string(new_y) + " I" + to_string(new_ij) + " J" + to_string(new_ij) + " BEVEL(-25.0)");
-    line[technology_on_position - 1 + 5].append("\"Zeleli bedzie potrzeba to zostanie tu dodane wyjscie");
-    //line[technology_on_position - 1 + 5].append("G3 X" + to_string(new_x - 17.0711) + " Y" + to_string(new_y) + " I-7.07107 J-7.07107 BEVEL(-25.0)");//MOZLIWE ZE BEDZIE POTRZEBA ZAPISU BEVEL(0.0)
-    line[technology_on_position - 1 + 6].append("TECHNOLOGY_OFF G40");
-    line[technology_on_position - 1 + 7].append("BEVEL_OFF");
-    console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie", console_colors(C_GREEN));
+    unsigned short line_to_add = 0;
+    line[technology_on_position - 1 + line_to_add++].append("BEVEL_ON");
+    line[technology_on_position - 1 + line_to_add++].append("G0 X" + to_string(new_x - 20) + " Y" + to_string(new_y - 20) + " G41");
+    line[technology_on_position - 1 + line_to_add++].append("TECHNOLOGY_ON");
+    line[technology_on_position - 1 + line_to_add++].append("G1 X" + to_string(new_x) + " Y" + to_string(new_y) + " BEVEL(0.0)");
+    line[technology_on_position - 1 + line_to_add++].append("G2 X" + to_string(new_x) + " Y" + to_string(new_y) + " I" + to_string(new_ij) + " J" + to_string(new_ij) + " BEVEL(-25.0)");
+    line[technology_on_position - 1 + line_to_add++].append("TECHNOLOGY_OFF G40");
+    line[technology_on_position - 1 + line_to_add++].append("BEVEL_OFF");
+    if (!(corr_diametr && corr_middle_x && corr_middle_y))
+        console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie", console_colors(C_GREEN));
+    else
+        console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie z uwzglednieniem korekcji: srednca: " + 
+            to_string((int)corr_diametr) + " srodek os X: " + to_string((int)corr_middle_x) + " srodek os Y: " + to_string((int)corr_middle_y),
+            console_colors(C_GREEN));
     return true;
 }
 bool option_4(string line[], unsigned short& line_amout, Console& console)

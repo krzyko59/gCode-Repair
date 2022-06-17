@@ -1,5 +1,3 @@
-#ifndef functions_h
-#define functions_h
 #include "functions.h"
 
 char load_options_to_select(short used_options[], Console& console)
@@ -118,6 +116,9 @@ bool is_file_exist(string FileName)
 }
 bool save_file(string& file_path, string line[], unsigned short& line_amout, Console& console)
 {
+    using std::ofstream;
+    using std::ios;
+
     string new_file_path;
     new_file_path.insert(0, file_path, 0, file_path.rfind(".", file_path.size() - 1));
     if (is_file_exist(new_file_path + "_gCr.NCP"))
@@ -237,4 +238,3 @@ double round_two(double data)
 {
     return round(data * 100) / 100;
 }
-#endif

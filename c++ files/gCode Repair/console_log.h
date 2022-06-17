@@ -1,7 +1,8 @@
 #ifndef console_log_h
 #define console_log_h
+
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <conio.h>//_getch
 #include<limits>//cin.ignore(numeric_limits<streamsize>::max(), '\n');
 #include<fstream>//wczytywanie plikow
@@ -13,6 +14,9 @@
 #include <windows.h>
 #include <winbase.h>
 using std::string;
+using std::cin;
+using std::cout;
+using std::endl;
 
 enum console_colors
 {
@@ -40,4 +44,5 @@ public:
 	void show_console_log();
 	void add_console_log(string log, unsigned short color);
 };
+
 #endif

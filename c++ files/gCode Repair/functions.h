@@ -1,5 +1,8 @@
+#ifndef function_h
+#define function_h
+
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <conio.h>//_getch
 #include<limits>//cin.ignore(numeric_limits<streamsize>::max(), '\n');
 #include<fstream>//wczytywanie plikow
@@ -16,6 +19,7 @@
 #include "options.h"
 using std::string;
 using std::ifstream;
+using std::to_string;
 
 char load_options_to_select(short used_options[], Console& console);
 void remove_quote(std::string& file_path);
@@ -36,3 +40,5 @@ void phrase_replace(string& text, string from, string to);
 void normalize_g(string line[], unsigned short& line_amout);
 string take_data(string text, string data_param);
 double round_two(double data);
+
+#endif

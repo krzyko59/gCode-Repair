@@ -1,7 +1,8 @@
 #ifndef options_hpp
 #define options_hpp
+
 #include <iostream>
-#include <string>
+#include <cstring>
 #include <conio.h>//_getch
 #include<limits>//cin.ignore(numeric_limits<streamsize>::max(), '\n');
 #include<fstream>//wczytywanie plikow
@@ -15,8 +16,8 @@
 #include "functions.h"
 #include "console_log.h"
 
-using namespace std;
-enum verssion
+using std::string;
+enum version
 {
 	//wersja programu
 	vMAJOR = 0,
@@ -24,9 +25,10 @@ enum verssion
 	vMINIOR = 0,
 	//oznacza siê kolejne etapy rozwoju programu w ramach tej samej koncepcji (wersji major). 
 	//Zmienia siê razem z zaimplementowaniem nowej funkcji, zmian¹ jakiejœ istniej¹cej
-	vRELEASE = 5,
+	vRELEASE = 6,
 	//mówi, którym wydaniem w ramach wersji minor jest dana paczka programu
 };
 bool option_1(string line[], unsigned short& line_amout, Console& console);
 bool option_4(string line[], unsigned short& line_amout, Console& console);
+
 #endif

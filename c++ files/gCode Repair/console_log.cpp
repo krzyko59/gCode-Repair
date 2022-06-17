@@ -1,5 +1,3 @@
-#ifndef console_log_hpp
-#define console_log_hpp
 #include "console_log.h"
 #include "functions.h"
 
@@ -16,12 +14,10 @@ void Console::end_program()
 }
 void Console::show_options_to_select(short used_options[])
 {
-    using std::cout;
-    using std::endl;
     cout << "\tWpisz numer opcji programu aby wykonac operacje" << endl <<
         "\tOpcje programu:" << endl;
     if (used_options[1] == 0)
-        cout << "[beta]    \t\t[1] Konwertowanie sita na ukosowanie obrysu zewnetrznego sita" << endl;
+        cout << "[early access]\t\t[1] Konwertowanie sita na ukosowanie obrysu zewnetrznego sita" << endl;
     this->text_color(console_colors(C_RED));
     cout << "[w planach]\t\t[2] Konwertowanie na wpalenia bez kompensacji" << endl;
     cout << "[w planach]\t\t[3] Zmiana wielkosci wpalen/wyjsc" << endl;
@@ -41,12 +37,13 @@ void Console::show_program_info()
     this->text_color(console_colors(C_BLUE));
     cout <<
         "\tgCODE repair" << endl <<
-        "\tWersja " << verssion(vMAJOR) << "." << verssion(vMINIOR) << "." << verssion(vRELEASE) << endl <<
+        "\tWersja " << version(vMAJOR) << "." << version(vMINIOR) << "." << version(vRELEASE) << endl <<
         "\tAutor: Kolos Krzysztof (krzysztof.kolos.95@gmail.com)" << endl << endl;
     this->text_color(console_colors(C_WHITE));
 }
 void Console::what_file_to_load(string& file_path, int argc, char** argv)
 {
+    using std::getline;
     if (argc != 1 && file_path == "")
     {
         file_path = argv[1];
@@ -87,4 +84,3 @@ Console::Console()
 {
     console_log_size = 0;
 }
-#endif

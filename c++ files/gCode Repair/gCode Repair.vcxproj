@@ -131,6 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="console_log.h" />
     <ClInclude Include="functions.h" />
+    <ClInclude Include="gCode Repair.h" />
     <ClInclude Include="options.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
