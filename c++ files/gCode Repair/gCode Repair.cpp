@@ -9,6 +9,7 @@ int main(int argc, char** argv)
     ifstream loaded_file;
     string line[10000];
 
+
     unsigned short line_amout = 0;
     //wczytanie pliku, przygotowanie do obróbki
     while (true)

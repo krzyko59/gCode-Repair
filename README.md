@@ -1,7 +1,8 @@
 # gCode Repair
+## Opis programu
 **Program konsolowy pisany w języku C++ (visual studio) na platformę Windows**</br>
 **Przekształcający kod maszynowy (GCODE), maszyny marki ECKERT, generowany przez program Lantek**</br></br>
-Program ten: </br>
+## Program ten: </br>
 - udoskonala kod maszynowy o funkcje które nie są możliwe do wdrożenia bezpośrednio z programu do generowania GCODE</br>
 - dostosowuje gotowe programy maszynowe do specyficznych sytuacji</br>
 - wzbogaca gotowe programy maszynowe o funkcjonalności, których ponowne stworzenie jest czasochłonne</br>
@@ -10,14 +11,17 @@ Program ten: </br>
 ![screen 2](https://github.com/krzyko59/gCode-Repair/blob/main/screen_4.png?raw=true)</br>
 ![screen 3](https://github.com/krzyko59/gCode-Repair/blob/main/screen_2.png?raw=true)</br>
 ![screen 4](https://github.com/krzyko59/gCode-Repair/blob/main/screen_3.png?raw=true)</br>
-</br></br>**Instrukcja:**
+</br></br>
+## **Instrukcja:**
 - a) uruchomić program, przeciągnąć plik *.NCP do konsoli, wcisnąć enter.
 - b) przeciągnąć plik *.NCP bezpośrednio na ikonę programu gCode repair
 - postępować zgodnie z komunikatami wyświetlanymi w konsoli.
-</br></br>**Wymagania:**
+</br></br>
+## **Wymagania:**
 - Microsoft Visual C++ Redistributable 2015-2022 (x64)
 - Microsoft Windows 7 64bit lub nowszy
-</br></br>**Zasady działania programu:**
+</br></br>
+## **Zasady działania programu:**
 - program wczytuje treść pliku *.NCP
 - wycina numeracje N<numer linii>
 - normalizuje zapisy (np.G01, g01, g1 na G1)

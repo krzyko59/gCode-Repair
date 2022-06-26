@@ -33,8 +33,11 @@ class Console
 	unsigned short console_color[100];
 	unsigned short console_log_size;
 	//
+	UINT oldcp;
+
 public:
 	Console();
+	~Console();
 	void show_separation();
 	void end_program();
 	void show_options_to_select(short used_options[]);

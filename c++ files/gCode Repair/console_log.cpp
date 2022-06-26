@@ -1,6 +1,5 @@
 #include "console_log.h"
 #include "functions.h"
-
 void Console::show_separation()
 {
     using std::cout;
@@ -73,8 +72,7 @@ void Console::add_console_log(string log, unsigned short color)
 {
     this->show_program_info();
     console_log[console_log_size] = log;
-    console_color[console_log_size] = color;
-    console_log_size++;
+    console_color[console_log_size++] = color;
 }
 void Console::text_color(unsigned short color)
 {
@@ -83,4 +81,7 @@ void Console::text_color(unsigned short color)
 Console::Console()
 {
     console_log_size = 0;
+}
+Console::~Console()
+{
 }

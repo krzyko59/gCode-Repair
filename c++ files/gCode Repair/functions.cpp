@@ -55,8 +55,7 @@ bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned
         getline(loaded_file, line_temp);
         if (line_temp == "")
             continue;
-        line[line_amout].insert(0, line_temp);
-        line_amout++;
+        line[line_amout++].insert(0, line_temp);
     }
     loaded_file.close();
     console.add_console_log("Udalo sie wczytac plik : " + file_path, console_colors(C_GREEN));
@@ -64,7 +63,7 @@ bool load_file(string& file_path, ifstream& loaded_file, string line[], unsigned
 }
 void remove_N_numbering(string line[], unsigned short& line_amout, Console& console)
 {
-    for (unsigned short i = 0; i < line_amout; i++)
+    for (unsigned short i = 0; i < line_amout; ++i)
     {
         if (line[i] == "")
             continue;
@@ -85,27 +84,27 @@ void remove_N_numbering(string line[], unsigned short& line_amout, Console& cons
 void add_N_numbering(string line[], unsigned short& line_amout)
 {
     int skipped_lines = 0;
-    for (unsigned short i = 0; i < line_amout; i++)
+    for (unsigned short i = 0; i < line_amout; ++i)
     {
         if (line[i].find("\"", 0) == string::npos)
             line[i].insert(0, "N" + to_string(i + 1 - skipped_lines) + "0 ");
         else
         {
-            for (int j = 0; j < line[i].find("\"", 0); j++)
+            for (int j = 0; j < line[i].find("\"", 0); ++j)
             {
                 if (line[i].at(j) != 32)
                 {
                     line[i].insert(0, "N" + to_string(i + 1 - skipped_lines) + "0 ");
                     break;
                 }
-                if ((j + 1) == line[i].find("\"", 0)) skipped_lines++;
+                if ((j + 1) == line[i].find("\"", 0)) ++skipped_lines;
             }
         }
     }
 }
 void DEBUG_show_lines(string line[], unsigned short& line_amout)
 {
-    for (unsigned short i = 0; i < line_amout; i++)
+    for (unsigned short i = 0; i < line_amout; ++i)
         cout << i << " | " << line[i] << endl;
 }
 bool is_file_exist(string FileName) 
@@ -125,7 +124,7 @@ bool save_file(string& file_path, string line[], unsigned short& line_amout, Con
     {
         short file_version = 1;
         while (is_file_exist(new_file_path + "_gCr_V" + to_string(file_version) + ".NCP"))
-            file_version++;
+            ++file_version;
         new_file_path.append("_gCr_V" + to_string(file_version) + ".NCP");
     }
     else new_file_path.append("_gCr.NCP");
@@ -137,7 +136,7 @@ bool save_file(string& file_path, string line[], unsigned short& line_amout, Con
         return false;
     }
     string write_line;
-    for (int i = 0; i < line_amout; i++)
+    for (int i = 0; i < line_amout; ++i)
     {
         write_line.clear();
         write_line.append(line[i]);
@@ -155,7 +154,7 @@ void insert_line(int shift_amout, int from_line, string line[], unsigned short& 
     for (int i = line_amout - 1; i >= from_line; i--)
         line[i + shift_amout] = line[i];
     //czyszczenie przeniesionych lini
-    for (int i = from_line; i < from_line + shift_amout; i++)
+    for (int i = from_line; i < from_line + shift_amout; ++i)
         line[i].clear();
     //zwiekszenie ilosci lini
     line_amout += shift_amout;
@@ -163,12 +162,12 @@ void insert_line(int shift_amout, int from_line, string line[], unsigned short& 
 void remove_line(int shift_amout, int from_line, string line[], unsigned short& line_amout)
 {
     //przesuniecie lini
-    for (int i = 0; i < line_amout - from_line - shift_amout; i++)
+    for (int i = 0; i < line_amout - from_line - shift_amout; ++i)
     {
         line[from_line + i] = line[from_line + shift_amout + i];
     }
     //czyszczenie pustych lini na koncu
-    for (int i = 0; i <= shift_amout; i++)
+    for (int i = 0; i <= shift_amout; ++i)
         line[line_amout - i].clear();
     //zmniejszenie ilosci lini
     line_amout -= shift_amout;
@@ -182,13 +181,11 @@ void add_gcode_info(short used_options[], string line[], unsigned short& line_am
     line[2] = "\"wykonane operacje:";
     if (used_options[1])
     {
-        line[3 + add_line] = "\" -Przerobiono obrys zewnetrzny na ukosowanie";
-        add_line++;
+        line[3 + add_line++] = "\" -Przerobiono obrys zewnetrzny na ukosowanie";
     }
     if (used_options[4])
     {
-        line[3 + add_line] = "\" -Obrocono glowice 3D na kat 180 stopni";
-        add_line++;
+        line[3 + add_line++] = "\" -Obrocono glowice 3D na kat 180 stopni";
     }
     SYSTEMTIME st;
     GetSystemTime(&st);
@@ -204,7 +201,7 @@ int rfind_line(string phrase, int from, string line[])
 }
 int find_line(string phrase, int from, string line[], unsigned short& line_amout)
 {
-    for (int i = from; i < line_amout; i++)
+    for (int i = from; i < line_amout; ++i)
         if (line[i].find(phrase, 0) != string::npos)
             return i;
     return string::npos;
@@ -220,7 +217,7 @@ void phrase_replace(string& text, string from, string to)
 }
 void normalize_g(string line[], unsigned short& line_amout)
 {
-    for (int i = 0; i < line_amout; i++)
+    for (int i = 0; i < line_amout; ++i)
     {
         phrase_replace(line[i], "G00", "G0");
         phrase_replace(line[i], "G01", "G1");

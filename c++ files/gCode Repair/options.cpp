@@ -60,7 +60,7 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     if (!(corr_diametr && corr_middle_x && corr_middle_y))
         console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie", console_colors(C_GREEN));
     else
-        console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie z uwzglednieniem korekcji: srednca: " + 
+        console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie z uwzglednieniem korekcji:\n srednca: " + 
             to_string((int)corr_diametr) + " srodek os X: " + to_string((int)corr_middle_x) + " srodek os Y: " + to_string((int)corr_middle_y),
             console_colors(C_GREEN));
     return true;
@@ -84,12 +84,12 @@ bool option_4(string line[], unsigned short& line_amout, Console& console)
     //dodanie lini "BEVEL_ON_DIRECTAX" po lini "USE_PRESELECTED"
     insert_line(1, init_position + 1, line, line_amout);
     line[init_position + 1].append("BEVEL_ON_DIRECTAX");
-    technology_off_position++;
+    ++technology_off_position;
     //dodanie lini "BEVEL_OFF" po oststniej lini "TECHNOLOGY_OFF"
     insert_line(1, technology_off_position + 1, line, line_amout);
     line[technology_off_position + 1].append("BEVEL_OFF");
     //szukaj lini z "G0", "G1"
-    for (int i = 0; i < line_amout; i++)
+    for (int i = 0; i < line_amout; ++i)
     {
         if (line[i].find("G0", 0) == string::npos &&
             line[i].find("G1", 0) == string::npos &&
