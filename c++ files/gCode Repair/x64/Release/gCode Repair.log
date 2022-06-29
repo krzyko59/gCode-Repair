@@ -1,3 +1,6 @@
-﻿  console_log.cpp
-console_log.obj : error LNK2001: nierozpoznany symbol zewnętrzny "public: void __cdecl Console::writeUnicode(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?writeUnicode@Console@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\x64\Release\gCode Repair.exe : fatal error LNK1120: liczba nierozpoznanych elementów zewnętrznych: 1
+﻿  Trwa generowanie kodu
+  2 of 468 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    6 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  gCode Repair.vcxproj -> C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\x64\Release\gCode Repair.exe

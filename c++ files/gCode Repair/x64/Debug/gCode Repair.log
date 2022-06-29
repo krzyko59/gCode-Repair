@@ -1,17 +1,16 @@
 ﻿  console_log.cpp
   functions.cpp
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(30,24): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(83,47): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(202,20): warning C4309: "return": obcięcie stałej wartości
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(209,20): warning C4309: "return": obcięcie stałej wartości
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(215,54): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned short", możliwa utrata danych
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\functions.cpp(28,24): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\functions.cpp(80,47): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\functions.cpp(200,20): warning C4309: "return": obcięcie stałej wartości
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\functions.cpp(207,20): warning C4309: "return": obcięcie stałej wartości
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\functions.cpp(213,54): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned short", możliwa utrata danych
   gCode Repair.cpp
   options.cpp
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(39,14): warning C4552: „-”: Wynik wyrażenia nie jest używany
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(95,51): warning C4267: "inicjowanie": konwersja z "size_t" do "short", możliwa utrata danych
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(104,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(107,49): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(108,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(109,74): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\options.cpp(102,51): warning C4267: "inicjowanie": konwersja z "size_t" do "short", możliwa utrata danych
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\options.cpp(111,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\options.cpp(114,49): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\options.cpp(115,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\gCode Repair\options.cpp(116,74): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
   Generowanie kodu...
-  gCode Repair.vcxproj -> C:\Users\Krzysiek\Desktop\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\x64\Debug\gCode Repair.exe
+  gCode Repair.vcxproj -> C:\Users\krzys\Documents\GitHub\gCode-Repair\c++ files\x64\Debug\gCode Repair.exe

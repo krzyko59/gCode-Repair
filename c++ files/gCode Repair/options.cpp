@@ -34,10 +34,15 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     middle_x = old_x + old_i;
     middle_y = old_y + old_j;
     //korekcja odchy³u g³owicy
-    float corr_diametr = 13;
+    float corr_diametr = 16;
     float corr_middle_x = -0.5;
     float corr_middle_y = 2;
-
+    /*
+    cout << endl << "Podaj <korekcje srednicy> <korekcje osi x> <korekcje osi y> Wartosci musza byc oddzielone spacja";
+    cin >> corr_diametr;
+    cin >> corr_middle_x;
+    cin >> corr_middle_y;
+    */
     diametr += corr_diametr;
     middle_x += corr_middle_x;
     middle_y += corr_middle_y;
