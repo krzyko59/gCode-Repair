@@ -33,16 +33,16 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     diametr = sqrt(old_i * old_i + old_j * old_j) * 2;
     middle_x = old_x + old_i;
     middle_y = old_y + old_j;
-    //korekcja odchy³u g³owicy
+    //korekcja odchy³u g³owicy #12
     float corr_diametr = 16;
-    float corr_middle_x = -0.5;
+    float corr_middle_x = (float) ( - 0.5);
     float corr_middle_y = 2;
-    /*
-    cout << endl << "Podaj <korekcje srednicy> <korekcje osi x> <korekcje osi y> Wartosci musza byc oddzielone spacja";
+    
+    cout << endl << "Podaj <korekcje srednicy> <korekcje osi x> <korekcje osi y> \nWartosci musza byc oddzielone spacja (np.: 16 -0.5 2)\n Wpisz:";
     cin >> corr_diametr;
     cin >> corr_middle_x;
     cin >> corr_middle_y;
-    */
+    
     diametr += corr_diametr;
     middle_x += corr_middle_x;
     middle_y += corr_middle_y;
@@ -66,7 +66,7 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
         console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie", console_colors(C_GREEN));
     else
         console.add_console_log("Przerobiono obrys zewnetrzny na ukosowanie z uwzglednieniem korekcji:\n srednca: " + 
-            to_string((int)corr_diametr) + " srodek os X: " + to_string((int)corr_middle_x) + " srodek os Y: " + to_string((int)corr_middle_y),
+            to_string(corr_diametr) + " srodek os X: " + to_string(corr_middle_x) + " srodek os Y: " + to_string(corr_middle_y),
             console_colors(C_GREEN));
     return true;
 }
