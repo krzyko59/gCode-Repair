@@ -27,6 +27,31 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
         old_j = stof(take_data(line[i], "J"));
         break;
     }
+    //szukanie pozycji INIT
+    int init_position = 0;
+    for (int i = 0; i < line_amout; i++)
+    {
+        if (line[i].find("INIT", 0) != string::npos)
+        {
+            init_position = i;
+            break;
+        }
+        if (i == line_amout)
+        {
+            console.add_console_log("Nie znaleziono parametru INIT",C_RED);
+            console.end_program();
+        }
+    }
+    int to_shift = technology_off_position - technology_on_position + 2;
+    insert_line(to_shift, init_position + 1, line, line_amout);
+    technology_off_position += to_shift;
+    technology_on_position += to_shift;
+    line[init_position + 1].append("USE_MARKER");
+    for (int i = 0; i <= to_shift - 1; i++)
+    {
+        line[init_position + 2 + i].append(line[technology_on_position - 1 + i]);
+    }
+    
     //czyszczenie lini
     remove_line(technology_off_position - technology_on_position + 2, technology_on_position - 1, line, line_amout);
     //obliczanie parametrow generowanego kola
