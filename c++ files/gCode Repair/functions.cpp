@@ -76,9 +76,24 @@ void remove_N_numbering(string line[], unsigned short& line_amout, Console& cons
         }
         if (line[i].find("\"", 0) != string::npos && line[i].find("N", 0) != 0)
             continue;
-        short to_position;
-        to_position = line[i].find(" ", 0) + 1;
-        line[i].erase(0, to_position);
+        if (line[i].find(" ", 0) == string::npos) remove_line(1, i, line, line_amout);
+        else
+        {
+            short to_position;
+            to_position = line[i].find(" ", 0) + 1;
+            line[i].erase(0, to_position);
+            if (line[i] == "")
+            {
+                remove_line(1, i, line, line_amout);
+                continue;
+            }
+            for (int j = 0; j < line[i].size(); j++)
+            {
+                if (line[i].at(j) != 32)//spacja
+                    break;
+                else if (j == line[i].size() - 1) remove_line(1, i, line, line_amout);
+            }
+        }
     }
 }
 void add_N_numbering(string line[], unsigned short& line_amout)
@@ -182,7 +197,7 @@ void add_gcode_info(short used_options[], string line[], unsigned short& line_am
 {
     insert_line(5 + used_options[0], 0, line, line_amout);
     short add_line = 0;
-    line[0] = "\"G-code edytowane za pomoc¹ programu gCode repair";
+    line[0] = "\"G-code edytowane za pomoca programu gCode repair";
     line[1] = "\"Autor Krzysztof Kolos";
     line[2] = "\"wykonane operacje:";
     if (used_options[1])

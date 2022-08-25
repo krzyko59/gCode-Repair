@@ -1,12 +1,12 @@
-﻿  options.cpp
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(133,51): warning C4267: "inicjowanie": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(142,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(145,49): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(146,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(147,74): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+﻿  functions.cpp
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(28,24): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(83,51): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(221,20): warning C4309: "return": obcięcie stałej wartości
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(228,20): warning C4309: "return": obcięcie stałej wartości
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(234,54): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned short", możliwa utrata danych
   Trwa generowanie kodu
-  1 of 469 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  2 of 469 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    3 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   gCode Repair.vcxproj -> D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\x64\Release\gCode Repair.exe
