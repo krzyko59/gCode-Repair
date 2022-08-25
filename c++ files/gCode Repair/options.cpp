@@ -85,6 +85,7 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     line[technology_on_position - 1 + line_to_add++].append("TECHNOLOGY_ON");
     line[technology_on_position - 1 + line_to_add++].append("G1 X" + to_string(new_x) + " Y" + to_string(new_y) + " BEVEL(0.0)");
     line[technology_on_position - 1 + line_to_add++].append("G2 X" + to_string(new_x) + " Y" + to_string(new_y) + " I" + to_string(new_ij) + " J" + to_string(new_ij) + " BEVEL(-25.0)");
+    line[technology_on_position - 1 + line_to_add++].append("G1 X" + to_string(new_x-7) + " Y" + to_string(new_y+7) + " BEVEL(-25.0)");
     line[technology_on_position - 1 + line_to_add++].append("TECHNOLOGY_OFF G40");
     line[technology_on_position - 1 + line_to_add++].append("BEVEL_OFF");
     if (!(corr_diametr && corr_middle_x && corr_middle_y))
