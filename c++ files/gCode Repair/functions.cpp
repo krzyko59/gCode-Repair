@@ -87,17 +87,23 @@ void add_N_numbering(string line[], unsigned short& line_amout)
     for (unsigned short i = 0; i < line_amout; ++i)
     {
         if (line[i].find("\"", 0) == string::npos)
-            line[i].insert(0, "N" + to_string(i + 1 - skipped_lines) + "0 ");
+            line[i].insert(0, "N" + to_string(i + 1 - skipped_lines) + "0 "); 
         else
         {
-            for (int j = 0; j < line[i].find("\"", 0); ++j)
+            if (line[i].at(0) == 34)//"
+                ++skipped_lines;
+            else
             {
-                if (line[i].at(j) != 32)
+                for (int j = 0; j < line[i].find("\"", 0); ++j)
                 {
-                    line[i].insert(0, "N" + to_string(i + 1 - skipped_lines) + "0 ");
-                    break;
+                    if (line[i].at(j) != 32)//spacja
+                    {
+                        line[i].insert(0, "N" + to_string(i + 1 - skipped_lines) + "0 ");
+                        break;
+                    }
+                    if ((j + 1) == line[i].find("\"", 0))
+                        ++skipped_lines;
                 }
-                if ((j + 1) == line[i].find("\"", 0)) ++skipped_lines;
             }
         }
     }
