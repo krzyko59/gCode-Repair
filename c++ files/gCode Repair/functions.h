@@ -1,6 +1,7 @@
 #ifndef function_h
 #define function_h
-
+#include<limits>
+//if_cin_correct()
 #include <iostream>
 #include <cstring>
 #include <conio.h>//_getch
@@ -40,5 +41,7 @@ void phrase_replace(string& text, string from, string to);
 void normalize_g(string line[], unsigned short& line_amout);
 string take_data(string text, string data_param);
 double round_two(double data);
+bool if_cin_correct();
+double enter_the_data(string question);
 
 #endif

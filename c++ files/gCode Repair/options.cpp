@@ -42,12 +42,12 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
             console.end_program();
         }
     }
-    int to_shift = technology_off_position - technology_on_position + 2;
+    int to_shift = technology_off_position - technology_on_position + 3;
     insert_line(to_shift, init_position + 1, line, line_amout);
     technology_off_position += to_shift;
     technology_on_position += to_shift;
     line[init_position + 1].append("USE_MARKER");
-    for (int i = 0; i <= to_shift - 1; i++)
+    for (int i = 0; i < to_shift - 1; i++)
     {
         line[init_position + 2 + i].append(line[technology_on_position - 1 + i]);
     }
@@ -62,11 +62,14 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     float corr_diametr = 16;
     float corr_middle_x = - 0.5;
     float corr_middle_y = 2;
+    float bevel_param;
     
-    cout << endl << "Podaj <korekcje srednicy> <korekcje osi x> <korekcje osi y> \nWartosci musza byc oddzielone spacja (np.: 16 -0.5 2)\n Wpisz:";
-    cin >> corr_diametr;
-    cin >> corr_middle_x;
-    cin >> corr_middle_y;
+    cout << "\nWprowadz parametry" << endl;
+    
+    corr_diametr = enter_the_data("Wpisz korekcje SREDNICY: ");
+    corr_middle_x = enter_the_data("Wpisz korekcje OSI X: ");
+    corr_middle_y = enter_the_data("Wpisz korekcje OSI Y: ");
+    bevel_param = enter_the_data("Wpisz wartosc BEVEL: ");
     
     diametr += corr_diametr;
     middle_x += corr_middle_x;
@@ -84,8 +87,8 @@ bool option_1(string line[], unsigned short& line_amout, Console& console)
     line[technology_on_position - 1 + line_to_add++].append("G0 X" + to_string(new_x - 20) + " Y" + to_string(new_y - 20) + " G41");
     line[technology_on_position - 1 + line_to_add++].append("TECHNOLOGY_ON");
     line[technology_on_position - 1 + line_to_add++].append("G1 X" + to_string(new_x) + " Y" + to_string(new_y) + " BEVEL(0.0)");
-    line[technology_on_position - 1 + line_to_add++].append("G2 X" + to_string(new_x) + " Y" + to_string(new_y) + " I" + to_string(new_ij) + " J" + to_string(new_ij) + " BEVEL(-25.0)");
-    line[technology_on_position - 1 + line_to_add++].append("G1 X" + to_string(new_x-7) + " Y" + to_string(new_y+7) + " BEVEL(-25.0)");
+    line[technology_on_position - 1 + line_to_add++].append("G2 X" + to_string(new_x) + " Y" + to_string(new_y) + " I" + to_string(new_ij) + " J" + to_string(new_ij) + " BEVEL(" + to_string(bevel_param) + ")");
+    line[technology_on_position - 1 + line_to_add++].append("G1 X" + to_string(new_x - 7) + " Y" + to_string(new_y + 7) + " BEVEL(" + to_string(bevel_param) + ")");
     line[technology_on_position - 1 + line_to_add++].append("TECHNOLOGY_OFF G40");
     line[technology_on_position - 1 + line_to_add++].append("BEVEL_OFF");
     if (!(corr_diametr && corr_middle_x && corr_middle_y))

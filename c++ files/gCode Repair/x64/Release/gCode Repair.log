@@ -5,8 +5,8 @@ D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCo
 D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(228,20): warning C4309: "return": obcięcie stałej wartości
 D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(234,54): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned short", możliwa utrata danych
   Trwa generowanie kodu
-  2 of 469 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  2 of 471 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
+    7 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   gCode Repair.vcxproj -> D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\x64\Release\gCode Repair.exe

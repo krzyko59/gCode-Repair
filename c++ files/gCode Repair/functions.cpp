@@ -256,3 +256,32 @@ double round_two(double data)
 {
     return round(data * 100) / 100;
 }
+bool if_cin_correct()
+{
+    /*
+    #include<iostream>
+    #include<limits>
+    */
+    bool czy_poprawne = !cin.fail();
+    cin.clear();
+#pragma push_macro("max")
+#undef max
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//#include<limits>
+#pragma pop_macro("max")
+    return czy_poprawne;
+}
+double enter_the_data(string question)
+{
+    double answer;
+    cout << "\t" << question;
+    while (true)
+    {
+        cin >> answer;
+        if (if_cin_correct())
+            return answer;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), C_RED);
+        cout << " Podano nie poprawne dane." <<  endl;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), C_WHITE);
+        cout << "\t" << question;
+    }
+}
