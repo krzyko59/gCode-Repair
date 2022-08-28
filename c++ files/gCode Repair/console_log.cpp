@@ -15,19 +15,19 @@ void Console::show_options_to_select(short used_options[])
 {
     cout << "\tWpisz numer opcji programu aby wykonac operacje" << endl <<
         "\tOpcje programu:" << endl;
-    if (used_options[1] == 0)
+    if (used_options[1] == 0 && used_options[4] == 0)
         cout << "[early access]\t\t[1] Konwertowanie sita na ukosowanie obrysu zewnetrznego sita" << endl;
     this->text_color(console_colors(C_RED));
     cout << "[w planach]\t\t[2] Konwertowanie na wpalenia bez kompensacji" << endl;
     cout << "[w planach]\t\t[3] Zmiana wielkosci wpalen/wyjsc" << endl;
     this->text_color(console_colors(C_WHITE));
+    if (used_options[1] == 0 && used_options[4] == 0)
     cout << "[early access]\t\t[4] Obrocenie glowicy na 180 stopni w calym programie" << endl;
     this->text_color(console_colors(C_RED));
     cout << "[w planach]\t\t[5] Zmiana predkosci palenia na krzywych (otworach)" << endl;
     //cout << "\t\t[9] Informacje o mozliwosciach programu" << endl;
     this->text_color(console_colors(C_WHITE));
-    if (used_options[0] != 0)
-        cout << "\t\t\t[0] Zapis do pliku i koniec programu" << endl;
+    cout << "\t\t\t[0] Zapis do pliku i koniec programu" << endl;
 }
 void Console::show_program_info()
 {

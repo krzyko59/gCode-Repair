@@ -34,18 +34,27 @@ int main(int argc, char** argv)
         switch (option)
         {
         case '1':   //sito
-            if (option_1(line, line_amout, console))
+            if (used_options[1] == 0 && used_options[4] == 0)
             {
-                used_options[0] += 1;
-                used_options[1] = 1;
-            }
+                if (option_1(line, line_amout, console))
+                {
+                    used_options[0] += 1;
+                    used_options[1] = 1;
+                }
+            }else 
+                console.add_console_log("Nie ma takiej opcji do wybrania", console_colors(C_WHITE));
             break;
         case '4':   //glowica 180
-            if (option_4(line, line_amout, console))
+            if (used_options[1] == 0 && used_options[4] == 0)
             {
-                used_options[0] += 1;
-                used_options[4] = 1;
+                if (option_4(line, line_amout, console))
+                {
+                    used_options[0] += 1;
+                    used_options[4] = 1;
+                }
             }
+            else
+                console.add_console_log("Nie ma takiej opcji do wybrania", console_colors(C_WHITE));
             break;
         case '2':   //kompensacja
         case '3':   //wejscia i wyjscia
