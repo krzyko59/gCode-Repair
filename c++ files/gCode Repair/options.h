@@ -25,7 +25,7 @@ enum version
 	vMINIOR = 0,
 	//oznacza siê kolejne etapy rozwoju programu w ramach tej samej koncepcji (wersji major). 
 	//Zmienia siê razem z zaimplementowaniem nowej funkcji, zmian¹ jakiejœ istniej¹cej
-	vRELEASE = 7,
+	vRELEASE = 8,
 	//mówi, którym wydaniem w ramach wersji minor jest dana paczka programu
 };
 bool option_1(string line[], unsigned short& line_amout, Console& console);
