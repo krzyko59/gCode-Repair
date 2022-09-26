@@ -74,24 +74,33 @@ void remove_N_numbering(string line[], unsigned short& line_amout, Console& cons
             console.add_console_log("Zla numeracja N lini: " + to_string(i), console_colors(C_RED));
             return;
         }
+        //tylko komentarz w lini
         if (line[i].find("\"", 0) != string::npos && line[i].find("N", 0) != 0)
             continue;
-        if (line[i].find(" ", 0) == string::npos) remove_line(1, i, line, line_amout);
+        if (line[i].find(" ", 0) == string::npos)
+        {
+            remove_line(1, i, line, line_amout);
+        }
         else
         {
             short to_position;
             to_position = line[i].find(" ", 0) + 1;
             line[i].erase(0, to_position);
+            //pusta linia, tylko N-numeracja
             if (line[i] == "")
             {
                 remove_line(1, i, line, line_amout);
+                --i;
                 continue;
             }
             for (int j = 0; j < line[i].size(); j++)
             {
                 if (line[i].at(j) != 32)//spacja
                     break;
-                else if (j == line[i].size() - 1) remove_line(1, i, line, line_amout);
+                else if (j == line[i].size() - 1)
+                {
+                    remove_line(1, i, line, line_amout);
+                }
             }
         }
     }

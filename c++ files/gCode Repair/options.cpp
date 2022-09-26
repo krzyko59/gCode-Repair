@@ -111,18 +111,34 @@ bool option_4(string line[], unsigned short& line_amout, Console& console)
     }
     //szukanie lini z ostatnim "TECHNOLOGY_OFF"
     short technology_off_position = rfind_line("TECHNOLOGY_OFF", line_amout, line);
+    short technology_on_position = rfind_line("TECHNOLOGY_ON", line_amout, line);
+    float x_max, y_max, data;
+    x_max = y_max = data = 0;
+    for (int i = 0; i < technology_off_position - technology_on_position + 1; i++)
+    {
+        if (line[i].find(" X", 0) != string::npos)
+            data=stof(take_data(line[technology_on_position - 2 + i], "X"));
+        if (x_max < data) x_max = data;
+    }
+    y_max = stof(take_data(line[technology_off_position - 1], "Y"));
+    //dodanie lini bezpiecznego odsuniecia
+    insert_line(2, technology_off_position+1, line, line_amout);
+    line[technology_off_position + 1].append("FEEDOVR=10");
+    line[technology_off_position + 2].append("G0 X"+to_string(x_max-500)+" Y"+to_string(y_max));
     if (technology_off_position == string::npos)
     {
         console.add_console_log("Program nie posiada frazy : TECHNOLOGY_OFF", console_colors(C_RED));
         return false;
     }
+    
     //dodanie lini "BEVEL_ON_DIRECTAX" po lini "USE_PRESELECTED"
     insert_line(1, init_position + 1, line, line_amout);
     line[init_position + 1].append("BEVEL_ON_DIRECTAX");
     ++technology_off_position;
     //dodanie lini "BEVEL_OFF" po oststniej lini "TECHNOLOGY_OFF"
-    insert_line(1, technology_off_position + 1, line, line_amout);
-    line[technology_off_position + 1].append("BEVEL_OFF");
+    insert_line(1, technology_off_position + 3, line, line_amout);
+    line[technology_off_position + 3].append("BEVEL_OFF");
+    
     //szukaj lini z "G0", "G1"
     for (int i = 0; i < line_amout; ++i)
     {

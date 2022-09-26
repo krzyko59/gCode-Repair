@@ -1,24 +1,24 @@
 ﻿  console_log.cpp
   functions.cpp
 D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(28,24): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(83,51): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(221,20): warning C4309: "return": obcięcie stałej wartości
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(228,20): warning C4309: "return": obcięcie stałej wartości
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(234,54): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned short", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(87,51): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(230,20): warning C4309: "return": obcięcie stałej wartości
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(237,20): warning C4309: "return": obcięcie stałej wartości
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\functions.cpp(243,54): warning C4267: "inicjowanie": konwersja z "size_t" do "unsigned short", możliwa utrata danych
   gCode Repair.cpp
   options.cpp
 D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(49,34): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
 D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(50,35): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
 D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(51,35): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
 D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(52,33): warning C4244: "=": konwersja z "double" do "float", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(137,51): warning C4267: "inicjowanie": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(146,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(149,49): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(150,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
-D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(151,74): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(153,51): warning C4267: "inicjowanie": konwersja z "size_t" do "short", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(162,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(165,49): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(166,63): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
+D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\gCode Repair\options.cpp(167,74): warning C4267: "=": konwersja z "size_t" do "short", możliwa utrata danych
   Trwa generowanie kodu
-  11 of 471 functions ( 2.3%) were compiled, the rest were copied from previous compilation.
+  2 of 471 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+    3 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   gCode Repair.vcxproj -> D:\github repo\gCode Repair\Github visual studio repo\gCode-Repair\c++ files\x64\Release\gCode Repair.exe
